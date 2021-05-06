@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvPersonalInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Personal Info"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvCurrentWeight"
+        android:text="Current weight"
+        app:layout_constraintBottom_toTopOf="@+id/tvCurrentWeight"
+        app:layout_constraintStart_toStartOf="@+id/tvCurrentWeight"></TextView>
+
+    <TextView
+        android:id="@+id/tvCurrentWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:shadowColor="@color/black"
+        android:text="80kg"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalInfo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvGoalWeight"
+        android:text="Current weight"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoalWeight"
+        app:layout_constraintStart_toStartOf="@+id/tvGoalWeight"></TextView>
+
+    <TextView
+        android:id="@+id/tvGoalWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="70kg"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentWeight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvDailyCalorieGoal"
+        android:text="Daily calorie goal"
+        app:layout_constraintBottom_toTopOf="@+id/tvDailyCalorieGoal"
+        app:layout_constraintStart_toStartOf="@+id/tvDailyCalorieGoal"></TextView>
+
+    <TextView
+        android:id="@+id/tvDailyCalorieGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="1800kcal"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGoalWeight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvDailyProteinGoal"
+        android:text="Daily protein goal"
+        app:layout_constraintBottom_toTopOf="@+id/tvDailyProteinGoal"
+        app:layout_constraintStart_toStartOf="@+id/tvDailyProteinGoal"></TextView>
+
+    <TextView
+        android:id="@+id/tvDailyProteinGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="120g"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDailyCalorieGoal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvDailyCarbGoal"
+        android:text="Daily carb goal"
+        app:layout_constraintBottom_toTopOf="@+id/tvDailyCarbGoal"
+        app:layout_constraintStart_toStartOf="@+id/tvDailyCarbGoal"></TextView>
+
+    <TextView
+        android:id="@+id/tvDailyCarbGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="120g"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDailyProteinGoal" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:labelFor="@+id/tvDailyFatGoal"
+        android:text="Daily fat goal"
+        app:layout_constraintBottom_toTopOf="@+id/tvDailyFatGoal"
+        app:layout_constraintStart_toStartOf="@+id/tvDailyFatGoal"></TextView>
+
+    <TextView
+        android:id="@+id/tvDailyFatGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:text="120g"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDailyCarbGoal" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_baseline_add_circle_24"
+        android:contentDescription="szia"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDailyFatGoal"
+        app:layout_constraintEnd_toEndOf="@+id/tvDailyFatGoal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
