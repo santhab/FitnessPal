@@ -19,13 +19,18 @@ class DailyFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dailyViewModel =
-                ViewModelProvider(this).get(DailyViewModel::class.java)
+
+        /*dailyViewModel =
+                ViewModelProvider(this).get(DailyViewModel::class.java)*/
+
+
         val root = inflater.inflate(R.layout.fragment_daily, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
+
+        /*val textView: TextView = root.findViewById(R.id.text_dashboard)
         dailyViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
-        })
+        })*/
+
         return root
     }
 }

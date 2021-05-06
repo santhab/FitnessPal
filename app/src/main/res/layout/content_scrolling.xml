@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.daily.DailyFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.foods.FoodFragment"
+    tools:showIn="@layout/fragment_home">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvPersonalInfo"
@@ -27,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvCurrentWeight"
-            android:text="Current weight"
+            android:text="Current weight (kg)"
             app:layout_constraintBottom_toTopOf="@+id/tvCurrentWeight"
             app:layout_constraintStart_toStartOf="@+id/tvCurrentWeight"></TextView>
 
@@ -39,7 +42,6 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="16dp"
             android:shadowColor="@color/black"
-            android:text="80kg"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -51,19 +53,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvGoalWeight"
-            android:text="Current weight"
+            android:text="Goal weight (kg)"
             app:layout_constraintBottom_toTopOf="@+id/tvGoalWeight"
             app:layout_constraintStart_toStartOf="@+id/tvGoalWeight"></TextView>
 
-        <TextView
+        <EditText
             android:id="@+id/tvGoalWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:text="70kg"
             android:textSize="20dp"
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,17 +76,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvDailyCalorieGoal"
-            android:text="Daily calorie goal"
+            android:text="Daily calorie goal (kcal)"
             app:layout_constraintBottom_toTopOf="@+id/tvDailyCalorieGoal"
             app:layout_constraintStart_toStartOf="@+id/tvDailyCalorieGoal"></TextView>
-        <TextView
+
+        <EditText
             android:id="@+id/tvDailyCalorieGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:text="1800kcal"
+            android:inputType="numberDecimal"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,17 +99,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvDailyProteinGoal"
-            android:text="Daily protein goal"
+            android:text="Daily protein goal (g)"
             app:layout_constraintBottom_toTopOf="@+id/tvDailyProteinGoal"
             app:layout_constraintStart_toStartOf="@+id/tvDailyProteinGoal"></TextView>
-        <TextView
+
+        <EditText
             android:id="@+id/tvDailyProteinGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:text="120g"
+            android:inputType="numberDecimal"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -118,17 +122,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvDailyCarbGoal"
-            android:text="Daily carb goal"
+            android:text="Daily carb goal (g)"
             app:layout_constraintBottom_toTopOf="@+id/tvDailyCarbGoal"
             app:layout_constraintStart_toStartOf="@+id/tvDailyCarbGoal"></TextView>
-        <TextView
+
+        <EditText
             android:id="@+id/tvDailyCarbGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:text="120g"
+            android:inputType="numberDecimal"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -141,32 +146,28 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:labelFor="@+id/tvDailyFatGoal"
-            android:text="Daily fat goal"
+            android:text="Daily fat goal (g)"
             app:layout_constraintBottom_toTopOf="@+id/tvDailyFatGoal"
             app:layout_constraintStart_toStartOf="@+id/tvDailyFatGoal"></TextView>
-        <TextView
+
+        <EditText
             android:id="@+id/tvDailyFatGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:text="120g"
+            android:layout_marginBottom="80dp"
+            android:inputType="numberDecimal"
             android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDailyCarbGoal" />
 
-        <TextView
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDailyFatGoal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+
+</androidx.core.widget.NestedScrollView>
