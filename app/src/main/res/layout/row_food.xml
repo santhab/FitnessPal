@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    android:layout_margin="6dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_fastfood_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFoodCalorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:text="500"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHelperKcal"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvHelperKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="kcal/100g"
+            app:layout_constraintStart_toEndOf="@+id/tvFoodCalorie"
+            app:layout_constraintTop_toTopOf="@id/tvFoodCalorie" />
+
+        <TextView
+            android:id="@+id/tvHelperProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="p:"
+            app:layout_constraintStart_toStartOf="@+id/tvFoodCalorie"
+            app:layout_constraintTop_toBottomOf="@+id/tvFoodCalorie" />
+
+        <TextView
+            android:id="@+id/tvFoodProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHelperProtein"
+            app:layout_constraintStart_toEndOf="@+id/tvHelperProtein"
+            app:layout_constraintTop_toTopOf="@+id/tvHelperProtein" />
+
+        <TextView
+            android:id="@+id/tvHelperCarb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="c:"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFoodProtein"
+            app:layout_constraintStart_toEndOf="@+id/tvFoodProtein" />
+
+        <TextView
+            android:id="@+id/tvFoodCarb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHelperCarb"
+            app:layout_constraintStart_toEndOf="@+id/tvHelperCarb"
+            app:layout_constraintTop_toTopOf="@+id/tvHelperCarb" />
+
+        <TextView
+            android:id="@+id/tvHelperFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="f:"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFoodCarb"
+            app:layout_constraintStart_toEndOf="@+id/tvFoodCarb" />
+
+        <TextView
+            android:id="@+id/tvFoodFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHelperFat"
+            app:layout_constraintStart_toEndOf="@+id/tvHelperFat" />
+
+        <TextView
+            android:id="@+id/tvFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="144dp"
+            android:text="Sült csirkecomb"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.52" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
