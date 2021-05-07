@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.fitnesspal.MainActivity
 import hu.bme.aut.android.fitnesspal.databinding.RowFoodBinding
 import hu.bme.aut.android.fitnesspal.model.Entry
 import hu.bme.aut.android.fitnesspal.model.Food
@@ -16,6 +15,7 @@ class EntryItemRecyclerViewAdapter(context: DailyFragment) : ListAdapter<Entry, 
 
     private var entryList = emptyList<Entry>()
     private var foodList = emptyList<Food>()
+    private var entryToFood: HashMap<Int, Food>? = null
     var itemClickListener: EntryItemClickListener? = null
 
 
@@ -46,12 +46,7 @@ class EntryItemRecyclerViewAdapter(context: DailyFragment) : ListAdapter<Entry, 
     override fun onBindViewHolder(holder: EntryItemRecyclerViewAdapter.ViewHolder, position: Int) {
         val entry = entryList[position]
 
-        for(item in foodList){
-
-            if(entry.FoodId == item.id){
-                holder.food=item
-            }
-        }
+        holder.food=entryToFood?.get(entry.id)
 
         holder.entry = entry
         holder.binding.tvFoodCalorie.text = (holder.food?.calorie!! * holder.entry!!.quantity).toInt().toString()
@@ -70,14 +65,13 @@ class EntryItemRecyclerViewAdapter(context: DailyFragment) : ListAdapter<Entry, 
         holder.binding.ivPriority.setImageResource(resource)*/
     }
 
-    fun addAllEntry(_entryList: MutableList<Entry>) {
+    fun addAllEntry(_entryList: MutableList<Entry>, _entryToFood: HashMap<Int, Food>) {
         entryList += _entryList
         submitList(entryList)
+        this.entryToFood = _entryToFood
     }
 
-    fun addAllFood(_foodList: MutableList<Food>){
-        foodList = _foodList
-    }
+
 
     inner class ViewHolder(val binding: RowFoodBinding) : RecyclerView.ViewHolder(binding.root) {
         var entry: Entry? = null

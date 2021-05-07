@@ -19,7 +19,9 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
     private lateinit var binding: FragmentDailyBinding
     private lateinit var dailyViewModel: DailyViewModel
     private lateinit var entryItemRecyclerViewAdapter: EntryItemRecyclerViewAdapter
-    private  var sumKcal = 0
+    private lateinit var entryToFood: HashMap<Int, Food>
+    private lateinit var entryList: MutableList<Entry>
+    private  var sumKcal: Int = 0
     private  var sumProt = 0
     private  var sumCarb = 0
     private  var sumFat = 0
@@ -28,6 +30,7 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
         super.onCreate(savedInstanceState)
         Log.d("TAG", "DailyFragment onCreate()")
         setupRecyclerView()
+
     }
 
     override fun onCreateView(
@@ -40,8 +43,9 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
                 ViewModelProvider(this).get(DailyViewModel::class.java)*/
 
 
-        val binding = FragmentDailyBinding.inflate(layoutInflater)
+        binding = FragmentDailyBinding.inflate(layoutInflater)
 
+        Log.d("TAG", "oncreateview")
         /*val textView: TextView = root.findViewById(R.id.text_dashboard)
         dailyViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
@@ -50,23 +54,28 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("TAG", "onviewcreated")
+
+        super.onViewCreated(view, savedInstanceState)
+        calculateSummary()
+    }
+
     private fun setupRecyclerView() {
         entryItemRecyclerViewAdapter = EntryItemRecyclerViewAdapter(this)
         entryItemRecyclerViewAdapter.itemClickListener = this
-        entryItemRecyclerViewAdapter.addAllFood((activity as MainActivity).demoFoodDataFromMainActivity )
-
         val foodList = (activity as MainActivity).demoFoodDataFromMainActivity
-        val entryList = (activity as MainActivity).demoEntryDataFromMainActivity
-
-        val entryToFood = HashMap<Int , Food>()
-
-        for (item in list){
-            entryToFood[]
+        entryList = (activity as MainActivity).demoEntryDataFromMainActivity
+        entryToFood = HashMap<Int , Food>()
+        for (entryItem in entryList){
+            for(foodItem in foodList){
+                if(entryItem.FoodId==foodItem.id){
+                    entryToFood[entryItem.id]=foodItem
+                    break
+                }
+            }
         }
-
-        entryItemRecyclerViewAdapter.addAllEntry( (activity as MainActivity).demoEntryDataFromMainActivity )
-
-
+        entryItemRecyclerViewAdapter.addAllEntry( entryList, entryToFood )
     }
 
     override fun onItemClick(food: Food) {
@@ -78,7 +87,17 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
         return false
     }
 
-    fun updateSummary(){
+    fun calculateSummary(){
+        for (item in entryList){
+            sumKcal += entryToFood.get(item.id)?.calorie!!
+            sumProt += entryToFood.get(item.id)?.protein!!
+            sumCarb += entryToFood.get(item.id)?.carb!!
+            sumFat+= entryToFood.get(item.id)?.fat!!
+        }
+        updateSummaryView()
+    }
+
+    fun updateSummaryView(){
         binding.tvSummaryKcal.text = sumKcal.toString()
         binding.tvSummaryProtein.text = sumProt.toString()
         binding.tvSummaryCarb.text = sumCarb.toString()
