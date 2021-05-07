@@ -46,6 +46,7 @@ class FoodItemRecyclerViewAdapter : ListAdapter<Food, FoodItemRecyclerViewAdapte
         holder.binding.tvFoodCarb.text = food.carb.toString()
         holder.binding.tvFoodFat.text = food.fat.toString()
         holder.binding.tvFoodName.text = food.name.toString()
+        holder.binding.tvFoodQuantity.text = 100.toString()
 
 
         /*val resource = when (todo.priority) {

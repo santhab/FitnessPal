@@ -10,8 +10,47 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import hu.bme.aut.android.fitnesspal.model.Entry
+import hu.bme.aut.android.fitnesspal.model.Food
 
 class MainActivity : AppCompatActivity() {
+
+    val demoFoodDataFromMainActivity = mutableListOf(
+        Food(1, "csirkecomb", 500,  20,30,10 ),
+        Food(2, "csokitorta", 800, 15, 78, 42),
+        Food(3, "marhapörkölt", 600, 24, 23, 30),
+        Food(4, "pizza", 1000,  20,30,10 ),
+        Food(5, "banán", 200, 15, 78, 42),
+        Food(6, "palacsinta", 230,  20,30,10 ),
+        Food(7, "túró", 140, 15, 78, 42),
+        Food(8, "kenyér", 360,  20,30,10 ),
+        Food(9, "kolbász", 504, 15, 78, 42),
+        Food(10, "kakaó", 500,  20,30,10 ),
+        Food(11, "narancs", 800, 15, 78, 42),
+        Food(12, "alma", 600, 24, 23, 30),
+        Food(13, "lazac", 1000,  20,30,10 ),
+        Food(14, "karaj", 200, 15, 78, 42),
+        Food(15, "zabpehely", 230,  20,30,10 ),
+        Food(16, "tojás", 140, 15, 78, 42),
+        Food(17, "tej", 360,  20,30,10 ),
+        Food(18, "szaloncukor", 504, 15, 78, 42)
+    )
+
+    val demoEntryDataFromMainActivity = mutableListOf(
+        Entry(1, 1, 1.5),
+        Entry(2,5, 2.0),
+        Entry(3,13, 1.7),
+        Entry(4,18, 1.2),
+        Entry(5, 17, 2.5),
+        Entry(6, 9, 2.0),
+        Entry(7, 7, 1.5),
+        Entry(8,11, 1.7),
+        Entry(9,15, 1.2),
+        Entry(10, 3, 2.5),
+        Entry(11, 6, 2.0),
+        Entry(12, 14, 1.5)
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,4 +73,7 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+
+
 }

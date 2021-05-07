@@ -7,6 +7,4 @@ data class Food(
         val protein: Int,
         val carb: Int,
         val fat: Int
-) {
-
-}
+) {}
