@@ -1,5 +1,6 @@
 package hu.bme.aut.android.fitnesspal.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,12 +67,32 @@ class EntryItemRecyclerViewAdapter(context: DailyFragment) : ListAdapter<Entry, 
     }
 
     fun addAllEntry(_entryList: MutableList<Entry>, _entryToFood: HashMap<Int, Food>) {
+        Log.d("TAG", "addAllEntry: sizeof _entrylist: "+_entryList.size.toString())
         entryList += _entryList
         submitList(entryList)
         this.entryToFood = _entryToFood
     }
 
+    fun removeAllEntry(_entryList: MutableList<Entry>, _entryToFood: HashMap<Int, Food>) {
+        Log.d("TAG", "removeAllEntry: sizeof _entrylist: "+_entryList.size.toString())
+        entryList = _entryList
+        submitList(entryList)
+        this.entryToFood = _entryToFood
+    }
 
+    fun removeEntry(_entryList: MutableList<Entry>, _entryToFood: HashMap<Int, Food>, position: Int ){
+        Log.d("TAG", "removeEntry: sizeof _entrylist: "+_entryList.size.toString())
+        entryList = entryList.filterIndexed { index, _ -> index != position }
+        submitList(entryList)
+        this.entryToFood = _entryToFood
+    }
+
+   /* fun applyEntry(_entryList: MutableList<Entry>, _entryToFood: HashMap<Int, Food>){
+        Log.d("TAG", "ApplyEntry: sizeof _entrylist: "+_entryList.size.toString())
+        entryList += _entryList
+        submitList(entryList)
+        this.entryToFood = _entryToFood
+    }*/
 
     inner class ViewHolder(val binding: RowFoodBinding) : RecyclerView.ViewHolder(binding.root) {
         var entry: Entry? = null

@@ -3,5 +3,5 @@
     <item android:id="@+id/itemCreateFood"
         android:title="@string/itemCreateFood"/>
     <item android:id="@+id/itemDeleteAllFood"
-        android:title="@string/itemDeleteAllFood"/>
+        android:title="@string/itemDeleteAll"/>
 </menu>

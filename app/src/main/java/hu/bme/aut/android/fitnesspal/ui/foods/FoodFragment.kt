@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.fitnesspal.FoodCreateFragment
 import hu.bme.aut.android.fitnesspal.MainActivity
 import hu.bme.aut.android.fitnesspal.R
-import hu.bme.aut.android.fitnesspal.adapter.EntryItemRecyclerViewAdapter
 import hu.bme.aut.android.fitnesspal.adapter.FoodItemRecyclerViewAdapter
 import hu.bme.aut.android.fitnesspal.databinding.FragmentFoodBinding
 import hu.bme.aut.android.fitnesspal.model.Food
@@ -25,7 +24,7 @@ class FoodFragment : Fragment(), FoodItemRecyclerViewAdapter.FoodItemClickListen
         Log.d("TAG", "FoodFragment onCreate()")
         binding = FragmentFoodBinding.inflate(layoutInflater)
         (activity as MainActivity).setSupportActionBar(binding.tbFood)
-        binding.tbFood.title = "FoodFragment toolbar "
+        binding.tbFood.title = "FoodFragment toolbar"
         setHasOptionsMenu(true)
         setupRecyclerView()
     }
@@ -77,15 +76,15 @@ class FoodFragment : Fragment(), FoodItemRecyclerViewAdapter.FoodItemClickListen
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.menu_foodbank, menu)
+        activity?.menuInflater?.inflate(R.menu.menu_foodfragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.itemCreateFood ->{
-                val todoCreateFragment = FoodCreateFragment()
-                todoCreateFragment.show(childFragmentManager, "TAG")
+                val foodCreateFragment = FoodCreateFragment()
+                foodCreateFragment.show(childFragmentManager, "TAG")
             }
             R.id.itemDeleteAllFood ->{
                 foodItemRecyclerViewAdapter.deleteAll()

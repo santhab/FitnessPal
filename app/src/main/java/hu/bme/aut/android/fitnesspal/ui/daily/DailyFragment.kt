@@ -2,19 +2,21 @@ package hu.bme.aut.android.fitnesspal.ui.daily
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import hu.bme.aut.android.fitnesspal.EntryCreateFragment
+import hu.bme.aut.android.fitnesspal.FoodCreateFragment
 import hu.bme.aut.android.fitnesspal.MainActivity
 import hu.bme.aut.android.fitnesspal.R
 import hu.bme.aut.android.fitnesspal.adapter.EntryItemRecyclerViewAdapter
+import hu.bme.aut.android.fitnesspal.adapter.FoodItemRecyclerViewAdapter
 import hu.bme.aut.android.fitnesspal.databinding.FragmentDailyBinding
 import hu.bme.aut.android.fitnesspal.model.Entry
 import hu.bme.aut.android.fitnesspal.model.Food
 
-class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickListener {
+class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickListener, EntryCreateFragment.EntryCreatedListener {
 
     private lateinit var binding: FragmentDailyBinding
     private lateinit var dailyViewModel: DailyViewModel
@@ -29,8 +31,11 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("TAG", "DailyFragment onCreate()")
+        binding = FragmentDailyBinding.inflate(layoutInflater)
+        (activity as MainActivity).setSupportActionBar(binding.tbDaily)
+        binding.tbDaily.title = "DailyFragment toolbar"
+        setHasOptionsMenu(true)
         setupRecyclerView()
-
     }
 
     override fun onCreateView(
@@ -41,10 +46,6 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
 
         /*dailyViewModel =
                 ViewModelProvider(this).get(DailyViewModel::class.java)*/
-
-
-        binding = FragmentDailyBinding.inflate(layoutInflater)
-
         Log.d("TAG", "oncreateview")
         /*val textView: TextView = root.findViewById(R.id.text_dashboard)
         dailyViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -76,6 +77,9 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
             }
         }
         entryItemRecyclerViewAdapter.addAllEntry( entryList, entryToFood )
+
+
+
     }
 
     override fun onItemClick(food: Food) {
@@ -84,10 +88,29 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
 
     override fun onItemLongClick(position: Int, view: View): Boolean {
         Log.d("TAG", "long click from DailyFragment!")
+        val popup = PopupMenu(activity, view)
+        popup.inflate(R.menu.menu_food)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.delete -> {
+                    entryList.removeAt(position)
+                    entryItemRecyclerViewAdapter.removeEntry(entryList,  entryToFood, position)
+                    calculateSummary()
+                }
+            }
+            false
+        }
+        popup.show()
         return false
     }
 
     fun calculateSummary(){
+        Log.d("TAG", "calculate summary")
+        Log.d("TAG", entryList.size.toString())
+        sumKcal = 0
+        sumProt = 0
+        sumCarb = 0
+        sumFat = 0
         for (item in entryList){
             sumKcal += (item.quantity*entryToFood.get(item.id)?.calorie!!).toInt()
             sumProt += (item.quantity*entryToFood.get(item.id)?.protein!!).toInt()
@@ -98,9 +121,39 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
     }
 
     fun updateSummaryView(){
+        Log.d("TAG", "update summary")
         binding.tvSummaryKcal.text = sumKcal.toString()
         binding.tvSummaryProtein.text = sumProt.toString()
         binding.tvSummaryCarb.text = sumCarb.toString()
         binding.tvSummaryFat.text = sumFat.toString()
+    }
+
+
+    fun deleteAll(){
+        entryList.removeAll(entryList)
+        entryItemRecyclerViewAdapter.removeAllEntry(entryList, entryToFood)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.menu_dailyfragment, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.itemCreateEntry ->{
+                val entryCreateFragment = EntryCreateFragment()
+                entryCreateFragment.show(childFragmentManager, "TAG")
+            }
+            R.id.itemDeleteAllEntry ->{
+                deleteAll()
+                calculateSummary()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onEntryCreated(food: Food) {
+        TODO("Not yet implemented")
     }
 }

@@ -8,20 +8,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_barDaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.FitnessPal.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbDaily"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Theme.FitnessPal.PopupOverlay"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Daily entries"
             android:textSize="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"/>
 
         <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -116,11 +132,12 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:id="@+id/food_list"
             android:name="food_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             app:layoutManager="LinearLayoutManager"
             tools:context=".FoodFragment"/>
 

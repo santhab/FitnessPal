@@ -96,7 +96,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="itemCreateFood">Create food</string>
-    <string name="itemDeleteAllFood">Delete all</string>
+    <string name="itemDeleteAll">Delete all</string>
     <string name="btnOk">Ok</string>
     <string name="btnCancel">Cancel</string>
     <string name="lblFoodName">Name</string>
@@ -104,6 +104,8 @@
     <string name="lblFoodProtein">Protein</string>
     <string name="lblFoodCarb">Carb</string>
     <string name="lblFoodFat">Fat</string>
+    <string name="itemCreateEntry">Create entry</string>
+    <string name="lblFoodQuantity">Quantity</string>
 
 
 </resources>
