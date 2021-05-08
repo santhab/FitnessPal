@@ -95,8 +95,15 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-
-
+    <string name="itemCreateFood">Create food</string>
+    <string name="itemDeleteAllFood">Delete all</string>
+    <string name="btnOk">Ok</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="lblFoodName">Name</string>
+    <string name="lblFoodCalorie">Calorie</string>
+    <string name="lblFoodProtein">Protein</string>
+    <string name="lblFoodCarb">Carb</string>
+    <string name="lblFoodFat">Fat</string>
 
 
 </resources>

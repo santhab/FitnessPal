@@ -25,7 +25,6 @@ class HomeFragment : Fragment() {
 
         val binding = FragmentHomeBinding.inflate(layoutInflater)
 
-
         /*val currentWeightView: TextView = root.findViewById(R.id.tvCurrentWeight)
         val goalWeightView: TextView = root.findViewById(R.id.tvGoalWeight)
         val goalCalorieView: TextView = root.findViewById(R.id.tvDailyCalorieGoal)

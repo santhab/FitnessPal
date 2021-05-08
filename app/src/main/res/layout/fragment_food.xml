@@ -8,15 +8,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.FitnessPal.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbFood"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Theme.FitnessPal.PopupOverlay"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Foodbank"
             android:textSize="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"/>
@@ -26,7 +40,8 @@
             android:name="food_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".FoodFragment"/>
 
