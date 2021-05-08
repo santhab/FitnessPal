@@ -5,10 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.fitnesspal.MainActivity
 import hu.bme.aut.android.fitnesspal.R
+import hu.bme.aut.android.fitnesspal.adapter.EntryItemRecyclerViewAdapter
 import hu.bme.aut.android.fitnesspal.adapter.FoodItemRecyclerViewAdapter
 import hu.bme.aut.android.fitnesspal.databinding.FragmentFoodBinding
 import hu.bme.aut.android.fitnesspal.model.Food
@@ -60,7 +62,16 @@ class FoodFragment : Fragment(), FoodItemRecyclerViewAdapter.FoodItemClickListen
 
     override fun onItemLongClick(position: Int, view: View): Boolean {
          Log.d("TAG", "long click from FoodFragment!")
-            return false
+        val popup = PopupMenu(activity, view)
+        popup.inflate(R.menu.menu_food)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.delete -> foodItemRecyclerViewAdapter.deleteRow(position)
+            }
+            false
+        }
+        popup.show()
+        return false
     }
 
 

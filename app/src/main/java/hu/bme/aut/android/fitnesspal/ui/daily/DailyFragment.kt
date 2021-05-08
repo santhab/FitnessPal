@@ -89,10 +89,10 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
 
     fun calculateSummary(){
         for (item in entryList){
-            sumKcal += entryToFood.get(item.id)?.calorie!!
-            sumProt += entryToFood.get(item.id)?.protein!!
-            sumCarb += entryToFood.get(item.id)?.carb!!
-            sumFat+= entryToFood.get(item.id)?.fat!!
+            sumKcal += (item.quantity*entryToFood.get(item.id)?.calorie!!).toInt()
+            sumProt += (item.quantity*entryToFood.get(item.id)?.protein!!).toInt()
+            sumCarb += (item.quantity*entryToFood.get(item.id)?.carb!!).toInt()
+            sumFat+= (item.quantity*entryToFood.get(item.id)?.fat!!).toInt()
         }
         updateSummaryView()
     }

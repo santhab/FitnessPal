@@ -62,6 +62,11 @@ class FoodItemRecyclerViewAdapter : ListAdapter<Food, FoodItemRecyclerViewAdapte
         submitList(foodList)
     }
 
+    fun deleteRow(position: Int) {
+        foodList = foodList.filterIndexed { index, _ -> index != position }
+        submitList(foodList)
+    }
+
 
     inner class ViewHolder(val binding: RowFoodBinding) : RecyclerView.ViewHolder(binding.root) {
         var food: Food? = null

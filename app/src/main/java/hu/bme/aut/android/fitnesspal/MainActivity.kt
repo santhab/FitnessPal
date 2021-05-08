@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     val demoEntryDataFromMainActivity = mutableListOf(
         Entry(1, 1, 1.5),
         Entry(2,5, 2.0),
-        Entry(3,13, 1.7),
+        Entry(3,13, 1.7)/*,
         Entry(4,18, 1.2),
         Entry(5, 17, 2.5),
         Entry(6, 9, 2.0),
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         Entry(9,15, 1.2),
         Entry(10, 3, 2.5),
         Entry(11, 6, 2.0),
-        Entry(12, 14, 1.5)
+        Entry(12, 14, 1.5)*/
     )
 
 
