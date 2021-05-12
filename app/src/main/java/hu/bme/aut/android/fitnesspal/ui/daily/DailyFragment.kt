@@ -156,4 +156,6 @@ class DailyFragment : Fragment(), EntryItemRecyclerViewAdapter.EntryItemClickLis
     override fun onEntryCreated(food: Food) {
         TODO("Not yet implemented")
     }
+
+
 }

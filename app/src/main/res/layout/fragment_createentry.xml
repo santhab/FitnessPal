@@ -1,131 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:stretchColumns="1">
+    android:orientation="vertical">
 
-    <TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodName" />
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
 
-        <TextView
-            android:id="@+id/etFoodName"
-            android:width="200dp"
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodName" />
+
+            <TextView
+                android:id="@+id/etFoodName"
+                android:width="200dp"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodCalorie" />
+
+            <TextView
+                android:id="@+id/etFoodCalorie"
+                android:width="200dp"
+                android:inputType="numberDecimal"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodProtein" />
+
+            <TextView
+                android:id="@+id/etFoodProtein"
+                android:width="200dp"
+                android:inputType="numberDecimal"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodCarb" />
+
+            <TextView
+                android:id="@+id/etFoodCarb"
+                android:width="200dp"
+                android:inputType="numberDecimal"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodFat" />
+
+            <TextView
+                android:id="@+id/etFoodFat"
+                android:width="200dp"
+                android:inputType="numberDecimal"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="center"
+                android:text="@string/lblFoodQuantity" />
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/etFoodQuantity"
+                android:width="200dp"
+                android:inputType="numberDecimal"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btnCreateFood"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:gravity="end"
+                android:text="@string/btnOk" />
+
+            <Button
+                android:id="@+id/btnCancelCreateFood"
+                android:layout_width="wrap_content"
+                android:gravity="left"
+                android:text="@string/btnCancel" />
+
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/food_list"
+            android:name="food_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
-    </TableRow>
 
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodCalorie" />
-
-        <TextView
-            android:id="@+id/etFoodCalorie"
-            android:width="200dp"
-            android:inputType="numberDecimal"
-            />
-
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodProtein" />
-
-        <TextView
-            android:id="@+id/etFoodProtein"
-            android:width="200dp"
-            android:inputType="numberDecimal"
-            />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodCarb" />
-
-        <TextView
-            android:id="@+id/etFoodCarb"
-            android:width="200dp"
-            android:inputType="numberDecimal"
-            />
-
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodFat" />
-
-        <TextView
-            android:id="@+id/etFoodFat"
-            android:width="200dp"
-            />
-
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/lblFoodQuantity" />
-
-        <EditText
-            android:id="@+id/tvFoodQuantity"
-            android:width="200dp"
-            android:inputType="numberDecimal"
-            />
-
-    </TableRow>
-
-    <TableRow>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/food_list"
-        android:name="food_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context=".DailyFragment"/>
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/btnCreateFood"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:gravity="end"
-            android:text="@string/btnOk" />
-
-        <Button
-            android:id="@+id/btnCancelCreateFood"
-            android:layout_width="wrap_content"
-            android:gravity="left"
-            android:text="@string/btnCancel" />
-
-    </TableRow>
-
-</TableLayout>
+</LinearLayout>

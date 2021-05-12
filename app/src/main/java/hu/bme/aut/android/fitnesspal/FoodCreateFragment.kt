@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.fitnesspal.databinding.FragmentCreatefoodBinding
 import hu.bme.aut.android.fitnesspal.model.Food
@@ -40,15 +41,26 @@ class FoodCreateFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCreateFood.setOnClickListener {
-            listener.onFoodCreated(Food(
-                id = Random.nextInt(),
-                name =  binding.etFoodName.text.toString(),
-                calorie = binding.etFoodCalorie.text.toString().toInt(),
-                protein = binding.etFoodProtein.text.toString().toInt(),
-                carb = binding.etFoodCarb.text.toString().toInt(),
-                fat = binding.etFoodFat.text.toString().toInt())
-            )
-            dismiss()
+
+        if(     binding.etFoodName.text.toString() != "" &&
+                binding.etFoodCalorie.text.toString() != "" &&
+                binding.etFoodProtein.text.toString() != "" &&
+                binding.etFoodCarb.text.toString() != "" &&
+                binding.etFoodFat.text.toString() != "")
+            {
+                listener.onFoodCreated(Food(
+                        id = Random.nextInt(),
+                        name =  binding.etFoodName.text.toString(),
+                        calorie = binding.etFoodCalorie.text.toString().toInt(),
+                        protein = binding.etFoodProtein.text.toString().toInt(),
+                        carb = binding.etFoodCarb.text.toString().toInt(),
+                        fat = binding.etFoodFat.text.toString().toInt()))
+                dismiss()
+            }
+        else
+            {
+                Toast.makeText(context, "You have to fill every input!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.btnCancelCreateFood.setOnClickListener {

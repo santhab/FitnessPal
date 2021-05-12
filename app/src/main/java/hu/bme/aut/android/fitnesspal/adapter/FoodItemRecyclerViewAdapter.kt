@@ -28,26 +28,21 @@ class FoodItemRecyclerViewAdapter : ListAdapter<Food, FoodItemRecyclerViewAdapte
     private var foodList = emptyList<Food>()
     var itemClickListener: FoodItemClickListener? = null
 
-    interface FoodItemClickListener {
-        fun onItemClick(food: Food)
-        fun onItemLongClick(position: Int, view: View): Boolean
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
         RowFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: FoodItemRecyclerViewAdapter.ViewHolder, position: Int) {
-        val food = foodList[position]
 
-        holder.food = food
-
-        holder.binding.tvFoodCalorie.text = food.calorie.toString()
-        holder.binding.tvFoodProtein.text = food.protein.toString()
-        holder.binding.tvFoodCarb.text = food.carb.toString()
-        holder.binding.tvFoodFat.text = food.fat.toString()
-        holder.binding.tvFoodName.text = food.name.toString()
-        holder.binding.tvFoodQuantity.text = 100.toString()
-
+        //if(foodList.size!=0){
+            val food = this.getItem(position)
+            holder.food = food
+            holder.binding.tvFoodCalorie.text = food.calorie.toString()
+            holder.binding.tvFoodProtein.text = food.protein.toString()
+            holder.binding.tvFoodCarb.text = food.carb.toString()
+            holder.binding.tvFoodFat.text = food.fat.toString()
+            holder.binding.tvFoodName.text = food.name.toString()
+            holder.binding.tvFoodQuantity.text = 100.toString()
+        //}
 
         /*val resource = when (todo.priority) {
             Todo.Priority.LOW -> R.drawable.ic_low
@@ -86,10 +81,15 @@ class FoodItemRecyclerViewAdapter : ListAdapter<Food, FoodItemRecyclerViewAdapte
             }
 
             itemView.setOnLongClickListener { view ->
-                itemClickListener?.onItemLongClick(adapterPosition, view)
+                food?.let {food -> itemClickListener?.onItemLongClick(adapterPosition, view, food) }
                 true
             }
         }
+    }
+
+    interface FoodItemClickListener {
+        fun onItemClick(food: Food)
+        fun onItemLongClick(position: Int, view: View, food: Food): Boolean
     }
 
 }

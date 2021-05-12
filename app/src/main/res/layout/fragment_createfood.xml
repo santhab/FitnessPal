@@ -5,7 +5,6 @@
     android:stretchColumns="1">
 
     <TableRow>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_column="1"
@@ -16,7 +15,6 @@
             android:id="@+id/etFoodName"
             android:width="200dp"
             />
-
     </TableRow>
 
     <TableRow>
